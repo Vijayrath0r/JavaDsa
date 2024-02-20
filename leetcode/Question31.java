@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 public class Question31 {
     public static int[] swap(int[] arr, int pos1, int pos2) {
         int temp;
