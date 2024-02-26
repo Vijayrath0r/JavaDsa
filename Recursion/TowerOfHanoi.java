@@ -15,7 +15,7 @@ public class TowerOfHanoi {
         count++;
         printTowerOfHanoi(n - 1, source, destination, helper);
         System.out.println("Trasfer disk   " + n + " From " + source + " to " + destination);
-        printTowerOfHanoi(n - 1, helper, destination, source);
+        printTowerOfHanoi(n - 1, helper, source, destination);
     }
 
     public static void main(String[] args) {
