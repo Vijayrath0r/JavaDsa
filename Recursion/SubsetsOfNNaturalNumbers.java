@@ -2,7 +2,6 @@ package Recursion;
 
 import java.util.ArrayList;
 
-import Striver.nextPermutation;
 
 public class SubsetsOfNNaturalNumbers {
     public static void printSubset(ArrayList<Integer> subset) {
