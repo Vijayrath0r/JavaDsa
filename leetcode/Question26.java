@@ -5,14 +5,13 @@ public class Question26 {
     public static int removeDuplicates(int[] nums) {
         int temp;
         int len = nums.length;
-        for (int i = 0; i < len - 1; i++) {
+        for (int i = len - 2; i >= 0; i--) {
             if (nums[i] == nums[i + 1]) {
                 for (int j = i; j < len - 1; j++) {
                     temp = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = temp;
                 }
-                i--;
                 len--;
             }
         }
@@ -25,8 +24,8 @@ public class Question26 {
     }
 }
 /*
-Runtime 458 ms
-Beats 5.30% of users with Java
-Memory 44.84 MB
-Beats 25.97% of users with Java
-*/
+ * Runtime 7 ms
+ * Beats 5.30% of users with Java
+ * Memory 44.68 MB
+ * Beats 60.30% of users with Java
+ */
