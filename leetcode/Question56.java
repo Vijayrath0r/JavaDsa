@@ -1,23 +1,23 @@
 // 56. Merge Intervals
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.List;
 
 public class Question56 {
     private static int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-        LinkedList<int[]> merged = new LinkedList<>();
+        List<int[]> ans = new ArrayList<>();
 
-        for (int[] interval : intervals) {
-            if (merged.isEmpty() || merged.getLast()[1] < interval[0]) {
-                merged.add(interval);
-            } else {
-                merged.getLast()[1] = Math.max(merged.getLast()[1], interval[1]);
-            }
-        }
+        Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
 
-        return merged.toArray(new int[merged.size()][]);
+        for (int[] interval : intervals)
+            if (ans.isEmpty() || ans.get(ans.size() - 1)[1] < interval[0])
+                ans.add(interval);
+            else
+                ans.get(ans.size() - 1)[1] = Math.max(ans.get(ans.size() - 1)[1], interval[1]);
+
+        return ans.toArray(int[][]::new);
     }
 
     public static void main(String[] args) {
