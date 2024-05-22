@@ -54,6 +54,7 @@ public class Question36 {
                 { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
                 { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
                 { '.', '.', '.', '.', '8', '.', '.', '7', '9' } }; // false
+        System.out.println(isValidSudoku(board1));
         System.out.println(isValidSudoku(board2));
     }
 }
