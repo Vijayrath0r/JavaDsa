@@ -1,20 +1,27 @@
 package leetcode;
 
+// Unique Paths
 public class Question62 {
-    private static int helper(int i, int j, int m, int n) {
+    private static int helper(int i, int j, int m, int n, int[][] paths) {
         if (i == m || j == n) {
             return 0;
         }
         if (i == m - 1 && j == n - 1) {
             return 1;
         }
-        int goDown = helper(i + 1, j, m, n);
-        int goRight = helper(i, j + 1, m, n);
-        return goDown + goRight;
+        if (paths[i][j] != 0) {
+            return paths[i][j];
+        }
+        int sum = helper(i + 1, j, m, n, paths) + helper(i, j + 1, m, n, paths);
+        if (paths[i][j] == 0 || paths[i][j] < sum) {
+            paths[i][j] = sum;
+        }
+        return sum;
     }
 
     public static int uniquePaths(int m, int n) {
-        return helper(0, 0, m, n);
+        int[][] paths = new int[m][n];
+        return helper(0, 0, m, n, paths);
     }
 
     public static void main(String[] args) {
