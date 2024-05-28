@@ -1,27 +1,32 @@
 package leetcode;
 
+// Jump Game
 public class Question55 {
-    private static boolean helper(int[] nums, int idx, int n) {
+    private static boolean helper(int[] nums, int idx, int n, Boolean[] memo) {
         if (idx == n - 1) {
             return true;
         }
         if (idx >= n || nums[idx] == 0) {
             return false;
         }
+        if (memo[idx] != null) {
+            return memo[idx];
+        }
+
         for (int i = nums[idx]; i > 0; i--) {
-            if (helper(nums, idx + i, n)) {
+            if (helper(nums, idx + i, n, memo)) {
+                memo[idx] = true;
                 return true;
             }
-            if (n - idx - 1 < i) {
-                i = n - idx;
-            }
         }
+        memo[idx] = false;
         return false;
     }
 
     public static boolean canJump(int[] nums) {
         int n = nums.length;
-        return helper(nums, 0, n);
+        Boolean[] memo = new Boolean[n];
+        return helper(nums, 0, n, memo);
     }
 
     public static void main(String[] args) {
