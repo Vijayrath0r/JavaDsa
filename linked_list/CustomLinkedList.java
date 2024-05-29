@@ -110,10 +110,12 @@ public class CustomLinkedList {
 
     public void printList() {
         ListNode current = head;
+        System.out.println("| head");
+        System.out.println("V");
         while (current != null) {
-            System.out.print(current.val + " ");
+            System.out.print(current.val + " -> ");
             current = current.next;
         }
-        System.out.println();
+        System.out.println("null");
     }
 }
