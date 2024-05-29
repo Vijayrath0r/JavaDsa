@@ -103,6 +103,16 @@ public class CustomLinkedList {
         return tail.val;
     }
 
+    // Get the head of the list
+    public ListNode getHead() {
+        return head;
+    }
+
+    // Set the head of the list
+    public void setHead(ListNode head) {
+        this.head = head;
+    }
+
     // Get the size of the list
     public int size() {
         return size;
