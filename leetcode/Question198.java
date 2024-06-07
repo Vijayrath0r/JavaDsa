@@ -19,6 +19,7 @@ public class Question198 {
         for (int i = 2; i < len; i++) {
             dp[i] = Math.max(dp[i - 1], nums[i] + dp[i - 2]); // Correctly calculate dp[i]
         }
+        System.out.println(Arrays.toString(dp));
         return dp[len - 1];
     }
 
