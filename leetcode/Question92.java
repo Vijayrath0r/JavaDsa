@@ -2,8 +2,6 @@ package leetcode;
 
 public class Question92 {
     private static ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode current = head;
-
         return head;
     }
 
