@@ -49,4 +49,20 @@ public class ListNode {
         System.out.println("null");
         System.out.println("************************************************************************");
     }
+
+    public static ListNode makeList(int[] list) {
+        if (list == null || list.length == 0) {
+            return null;
+        }
+
+        ListNode head = new ListNode(list[0]);
+        ListNode current = head;
+
+        for (int i = 1; i < list.length; i++) {
+            current.next = new ListNode(list[i]);
+            current = current.next;
+        }
+
+        return head;
+    }
 }
