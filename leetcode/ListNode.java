@@ -30,8 +30,9 @@ public class ListNode {
     }
 
     public void print(ListNode point) {
-        if (point == null) {
+        if (point == null || point.next == null) {
             this.print();
+            return;
         }
         ListNode current = this; // Start with the current instance
         System.out.println("************************************************************************");
