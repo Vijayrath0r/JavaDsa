@@ -5,19 +5,23 @@ import java.util.Arrays;
 
 public class Question322 {
     private static int coinChange(int[] coins, int amount) {
-        int idx = coins.length - 1;
-        int steps = 0;
-        Arrays.sort(coins);
-        while (amount > 0 && idx >= 0) {
-            int temp = amount - coins[idx];
-            if (temp >= 0) {
-                amount = amount - coins[idx];
-                steps++;
-            } else {
-                idx--;
+        if (amount == 0) {
+            return 0;
+        }
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0; // Base case: 0 coins to make amount 0
+
+        for (int i = 0; i <= amount; i++) {
+            if (dp[i] != Integer.MAX_VALUE) {
+                for (int coin : coins) {
+                    if (i <= amount - coin && i + coin <= amount) {
+                        dp[i + coin] = Math.min(dp[i + coin], dp[i] + 1);
+                    }
+                }
             }
         }
-        return amount == 0 ? steps : -1;
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 
     public static void main(String[] args) {
@@ -27,8 +31,11 @@ public class Question322 {
         // int amount = 3;
         // int[] coins = { 1 };
         // int amount = 0;
-        int[] coins = { 186, 419, 83, 408 };
-        int amount = 6249;
+        // int[] coins = { 186, 419, 83, 408 };
+        // int amount = 6249;
+
+        int[] coins = { 1, 2147483647 };
+        int amount = 2;
         System.out.println(coinChange(coins, amount));
     }
 }
