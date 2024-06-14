@@ -1,22 +1,36 @@
 package leetcode;
 
+// Pow(x, n)
 public class Question50 {
+    private static double helper(double x, long n) {
+        if (n == 0) {
+            return 1;
+        }
+        double half = helper(x, n / 2);
+        if (n % 2 == 0) {
+            return half * half;
+        } else {
+            return half * half * x;
+        }
+    }
+
     public static double myPow(double x, int n) {
-        double result = 1.0000;
-        if (n == 0 || x == 1) {
-            return 1.0000;
+        if (n == 0) {
+            return 1.0;
+        } else if (x == 1.0) {
+            return 1.0;
         } else if (n == 1) {
             return x;
-        } else if (n > 1) {
-            for (int i = 0; i < n; i++) {
-                result *= x;
-            }
-        } else {
-            for (int i = n; i < 0; i++) {
-                result *= x;
-            }
-            result = 1.0000/result;
         }
+
+        boolean isNegative = n < 0;
+        long absN = Math.abs((long) n);
+
+        double result = helper(x, absN);
+        if (isNegative) {
+            return 1 / result;
+        }
+
         return result;
     }
 
