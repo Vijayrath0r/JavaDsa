@@ -1,7 +1,7 @@
 package leetcode;
 
 // Number of 1 Bits
-public class Questoin191 {
+public class Question191 {
     private static int hammingWeight(int n) {
         int count = 0;
         while (n != 0) {

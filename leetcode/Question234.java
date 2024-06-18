@@ -3,7 +3,7 @@ package leetcode;
 // Palindrome Linked List
 import java.util.Stack;
 
-public class Questoin234 {
+public class Question234 {
     private static boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) {
             return true;
