@@ -1,52 +1,57 @@
 package leetcode;
 
 // Add Two Numbers II
-import java.util.Stack;
 
 public class Question445 {
+    private static ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        ListNode current = head;
+        while (current != null) {
+            ListNode nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+        return prev;
+    }
+
     private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Stack<Integer> s1 = new Stack<>();
-        Stack<Integer> s2 = new Stack<>();
+        ListNode h1 = reverse(l1);
+        ListNode h2 = reverse(l2);
 
-        while (l1 != null) {
-            s1.push(l1.val);
-            l1 = l1.next;
-        }
+        int carry = (h1.val + h2.val);
+        ListNode result = new ListNode(carry % 10);
+        carry /= 10;
+        h1 = h1.next;
+        h2 = h2.next;
 
-        while (l2 != null) {
-            s2.push(l2.val);
-            l2 = l2.next;
-        }
-        ListNode dummy = new ListNode(0);
-        ListNode sum = dummy.next;
-        int carry = 0;
-        while (!s1.isEmpty() || !s2.isEmpty()) {
-            sum = dummy.next;
-            if (!s1.isEmpty() && !s2.isEmpty()) {
-                carry += s1.pop() + s2.pop();
-            } else if (!s1.isEmpty()) {
-                carry += s1.pop();
+        ListNode current = result;
+        while (h1 != null || h2 != null) {
+            if (h1 != null && h2 != null) {
+                carry += (h1.val + h2.val);
+                h1 = h1.next;
+                h2 = h2.next;
+            } else if (h1 != null) {
+                carry += h1.val;
+                h1 = h1.next;
             } else {
-                carry += s2.pop();
+                carry += h2.val;
+                h2 = h2.next;
             }
-            ListNode val = new ListNode(carry % 10);
+            current.next = new ListNode(carry % 10);
             carry /= 10;
-            val.next = sum;
-            dummy.next = val;
+            current = current.next;
         }
         if (carry != 0) {
-            sum = dummy.next;
-            ListNode val = new ListNode(carry % 10);
-            val.next = sum;
-            dummy.next = val;
+            current.next = new ListNode(carry % 10);
         }
 
-        return dummy.next;
+        return reverse(result);
     }
 
     public static void main(String[] args) {
         // int[] l1 = { 7, 2, 4, 3 }, l2 = { 5, 6, 4 }; // [ 7, 8, 0, 7]
-        int[] l1 = { 9, 9, 9, 9 }, l2 = { 9, 9, 9, 9 }; // [ 7, 8, 0, 7]
+        int[] l1 = { 9, 9, 9, 9 }, l2 = { 9, 9, 9, 9 }; // [ 1,9,9,9,8]
 
         ListNode result = addTwoNumbers(ListNode.makeList(l1), ListNode.makeList(l2));
         result.print();
