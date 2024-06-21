@@ -46,7 +46,7 @@ public class Question117 {
 
         Node.print(root);
         Node result = connect(root);
-        Node.print(root);
+        Node.print(result);
     }
 }
 
