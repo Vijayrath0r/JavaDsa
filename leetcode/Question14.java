@@ -1,27 +1,24 @@
 package leetcode;
 
+// Longest Common Prefix
 public class Question14 {
     public static String longestCommonPrefix(String[] strs) {
-        String result = "";
         for (int i = 0; i < strs[0].length(); i++) {
-            for (int j = 0; j < strs.length - 1; j++) {
-                if (strs[j].length() <= i || strs[j + 1].length() <= i) {
-                    return result;
-                }
-                if (strs[j].charAt(i) != strs[j + 1].charAt(i)) {
-                    return result;
+            char c = strs[0].charAt(i);
+            for (int j = 1; j < strs.length; j++) {
+                if (i >= strs[j].length() || strs[j].charAt(i) != c) {
+                    return strs[0].substring(0, i);
                 }
             }
-            result += strs[0].charAt(i);
         }
-        return result;
+        return strs[0];
     }
 
     public static void main(String[] args) {
-        // String[] strs = { "flower", "flow", "flight" };
+        String[] strs = { "flower", "flow", "flight" };
         // String[] strs = { "abcd", "aabccd", "abcde" };
         // String[] strs = { "dog","racecar","car" };
-        String[] strs = { "ab", "a" };
+        // String[] strs = { "ab", "a" };
         System.out.println(longestCommonPrefix(strs));
     }
 }
