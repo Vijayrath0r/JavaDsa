@@ -1,15 +1,18 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"java.debug.settings.onBuildFailureProceed": true,
-		"window.autoDetectColorScheme": true,
-		"workbench.preferredDarkColorTheme": "Default Dark Modern",
-		"workbench.preferredHighContrastColorTheme": "Default Dark Modern",
-		"workbench.preferredHighContrastLightColorTheme": "Default Dark Modern",
-		"workbench.preferredLightColorTheme": "Default Dark Modern"
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "java.debug.settings.onBuildFailureProceed": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "workbench.preferredHighContrastColorTheme": "Default Dark Modern",
+    "workbench.preferredHighContrastLightColorTheme": "Default Dark Modern",
+    "workbench.preferredLightColorTheme": "Default Dark Modern",
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  }
 }
