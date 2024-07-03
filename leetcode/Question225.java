@@ -48,5 +48,7 @@ public class Question225 {
         int param_2 = obj.pop();
         int param_3 = obj.top();
         boolean param_4 = obj.empty();
+
+        System.out.println(param_2 + " " + param_3 + " " + param_4);
     }
 }
