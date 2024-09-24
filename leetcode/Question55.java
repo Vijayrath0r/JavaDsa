@@ -2,7 +2,7 @@ package leetcode;
 
 // Jump Game
 public class Question55 {
-    public boolean canJump(int[] nums) {
+    public static boolean canJump(int[] nums) {
         int n = nums.length;
         int maxIndex = 0;
         for (int i = 0; i < n; i++) {
