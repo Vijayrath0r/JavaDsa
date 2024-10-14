@@ -11,10 +11,10 @@ public class Question2530 {
         for (int num : nums) {
             heap.add(num);
         }
-        for (int i = 0; i < k; i++) {
-            int max = heap.poll();
-            result += max;
-            heap.add((int) Math.ceil(max / 3.0));
+        for (int i = 0; i < k; ++i) {
+            final int num = heap.poll();
+            result += num;
+            heap.offer((num + 2) / 3);
         }
         return result;
     }
